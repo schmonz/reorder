@@ -1,7 +1,6 @@
 package com.schmonz.kata;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Integers {
@@ -20,10 +19,7 @@ public class Integers {
 
 		int offsetForRemovedSlice = (inFrontOfIndex < start) ? 0 : slice.size();
 
-		Collections.reverse(slice);
-		for (int element : slice) {
-			elements.add(inFrontOfIndex - offsetForRemovedSlice, element);
-		}
+		elements.addAll(inFrontOfIndex - offsetForRemovedSlice, slice);
 
 		return new Integers(elements);
 	}
