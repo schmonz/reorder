@@ -10,17 +10,20 @@ public class Integers {
 		this.elements = new ArrayList<>(elements);
 	}
 
-	public List<Integer> getElements() {
-		return elements;
+	@Override
+	public boolean equals(Object o) {
+		if (null == o) {
+			return false;
+		}
+
+		List<Integer> listOfIntegers = ((Integers) o).elements;
+		return listOfIntegers.equals(elements);
 	}
 
 	public Integers move(int start, int end, int inFrontOfIndex) {
 		List<Integer> slice = copyAndRemoveSlice(start, end);
-
 		int offsetForRemovedSlice = (inFrontOfIndex < start) ? 0 : slice.size();
-
 		elements.addAll(inFrontOfIndex - offsetForRemovedSlice, slice);
-
 		return new Integers(elements);
 	}
 
