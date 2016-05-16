@@ -1,13 +1,15 @@
 package com.schmonz.kata;
 
+import static java.util.Arrays.asList;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Integers {
 	private List<Integer> elements;
 
-	public Integers(List<Integer> elements) {
-		this.elements = new ArrayList<>(elements);
+	public Integers(Integer... integers) {
+		this.elements = new ArrayList<>(asList(integers));
 	}
 
 	@Override
@@ -24,7 +26,7 @@ public class Integers {
 		List<Integer> slice = copyAndRemoveSlice(start, end);
 		int offsetForRemovedSlice = (inFrontOfIndex < start) ? 0 : slice.size();
 		elements.addAll(inFrontOfIndex - offsetForRemovedSlice, slice);
-		return new Integers(elements);
+		return new Integers(elements.toArray(new Integer[0]));
 	}
 
 	private List<Integer> copyAndRemoveSlice(int start, int end) {

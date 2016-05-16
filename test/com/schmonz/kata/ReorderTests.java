@@ -1,6 +1,5 @@
 package com.schmonz.kata;
 
-import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -12,16 +11,16 @@ public class ReorderTests {
 
 	@Before
 	public void setup() {
-		set = new Integers(asList(10, 20, 30, 40, 50));
+		set = new Integers(10, 20, 30, 40, 50);
 	}
 
 	@Test
 	public void object_equals() {
-		assertEquals(new Integers(asList(10, 20, 30, 40, 50)), set);
-		assertNotEquals(new Integers(asList(20, 30, 40, 50)), set);
-		assertNotEquals(new Integers(asList(10, 20, 30, 40, 50, 60)), set);
-		assertNotEquals(new Integers(asList(10, 20, 50, 40, 50)), set);
-		assertNotEquals(new Integers(asList(10, 30, 50, 40, 20)), set);
+		assertEquals(new Integers(10, 20, 30, 40, 50), set);
+		assertNotEquals(new Integers(20, 30, 40, 50), set);
+		assertNotEquals(new Integers(10, 20, 30, 40, 50, 60), set);
+		assertNotEquals(new Integers(10, 20, 50, 40, 50), set);
+		assertNotEquals(new Integers(10, 30, 50, 40, 20), set);
 	}
 
 	@Test
@@ -31,12 +30,12 @@ public class ReorderTests {
 
 	@Test
 	public void move_single_element_to_later_position() {
-		assertEquals(new Integers(asList(10, 30, 20, 40, 50)), set.move(1, 1, 3));
+		assertEquals(new Integers(10, 30, 20, 40, 50), set.move(1, 1, 3));
 	}
 
 	@Test
 	public void move_single_element_to_earlier_position() {
-		assertEquals(new Integers(asList(20, 10, 30, 40, 50)), set.move(1, 1, 0));
+		assertEquals(new Integers(20, 10, 30, 40, 50), set.move(1, 1, 0));
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -51,12 +50,12 @@ public class ReorderTests {
 
 	@Test
 	public void move_multiple_elements_to_later_position() {
-		assertEquals(new Integers(asList(40, 10, 20, 30, 50)), set.move(0, 2, 4));
+		assertEquals(new Integers(40, 10, 20, 30, 50), set.move(0, 2, 4));
 	}
 
 	@Test
 	public void move_multiple_elements_to_earlier_position() {
-		assertEquals(new Integers(asList(30, 40, 50, 10, 20)), set.move(2, 4, 0));
+		assertEquals(new Integers(30, 40, 50, 10, 20), set.move(2, 4, 0));
 	}
 
 	// how about move(which, where)?
